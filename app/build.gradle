@@ -26,5 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:design:25.2.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'org.xdty.preference:color-picker:0.0.4'
     testCompile 'junit:junit:4.12'
 }

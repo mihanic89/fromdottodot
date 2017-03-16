@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
         loadDrawables();
         RelativeLayout Rlmain = (RelativeLayout) findViewById(R.id.rl);
         RelativeLayout.LayoutParams lParams = new RelativeLayout.LayoutParams(
