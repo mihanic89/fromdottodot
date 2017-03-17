@@ -43,6 +43,8 @@ public class DrawingView extends View
 		initPaint();
 	}
 
+
+
 	private void initPaint()
 	{
 		mDrawPaint = new Paint();

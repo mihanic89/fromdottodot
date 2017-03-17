@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import org.xdty.preference.colorpicker.ColorPickerDialog;
 import org.xdty.preference.colorpicker.ColorPickerSwatch;
 
@@ -21,7 +25,10 @@ import xyz.yapapa.fromdottodot.R;
 import xyz.yapapa.fromdottodot.manager.FileManager;
 import xyz.yapapa.fromdottodot.manager.PermissionManager;
 import xyz.yapapa.fromdottodot.ui.component.DrawingView;
+import xyz.yapapa.fromdottodot.ui.component.SquareImageView;
 import xyz.yapapa.fromdottodot.ui.dialog.StrokeSelectorDialog;
+
+import static xyz.yapapa.fromdottodot.R.id.adView;
 
 
 public class MainActivity extends AppCompatActivity
@@ -29,18 +36,21 @@ public class MainActivity extends AppCompatActivity
 	@Bind(R.id.main_drawing_view)
 	DrawingView mDrawingView;
 	//@Bind(R.id.main_fill_iv)    ImageView mFillBackgroundImageView;
-	@Bind(R.id.main_color_iv)   ImageView mColorImageView;
-	@Bind(R.id.main_stroke_iv)  ImageView mStrokeImageView;
-	@Bind(R.id.main_undo_iv)    ImageView mUndoImageView;
-	@Bind(R.id.main_redo_iv)    ImageView mRedoImageView;
-    @Bind(R.id.prev_pic)        ImageView mPrevImageView;
-    @Bind(R.id.next_pic)        ImageView mNextImageView;
-    @Bind(R.id.share)           ImageView mShareImageView;
-    @Bind(R.id.delete)          ImageView mDeleteImageView;
+	@Bind(R.id.main_color_iv)
+	ImageView mColorImageView;
+	@Bind(R.id.main_stroke_iv) 	SquareImageView mStrokeImageView;
+	@Bind(R.id.main_undo_iv)    SquareImageView mUndoImageView;
+	@Bind(R.id.main_redo_iv)    SquareImageView mRedoImageView;
+    @Bind(R.id.prev_pic)        SquareImageView mPrevImageView;
+    @Bind(R.id.next_pic)        SquareImageView mNextImageView;
+    @Bind(R.id.share)           SquareImageView mShareImageView;
+    @Bind(R.id.delete)          SquareImageView mDeleteImageView;
 
 	private int mCurrentBackgroundColor;
 	private int mCurrentColor;
 	private int mCurrentStroke;
+    private AdView mAdView;
+    private FirebaseAnalytics mFirebaseAnalytics;
 	private static final int MAX_STROKE_WIDTH = 50;
     int[] intDrawables ;
     int i=0;
@@ -50,6 +60,12 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        mAdView = (AdView) findViewById(adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("09D7B5315C60A80D280B8CDF618FD3DE")
+                .build();
+        mAdView.loadAd(adRequest);
         loadDrawables();
 		ButterKnife.bind(this);
 
@@ -192,7 +208,8 @@ public class MainActivity extends AppCompatActivity
 					startShareDialog(uri);
 				} else
 				{
-					Toast.makeText(this, "The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
+
+					Toast.makeText(this, R.string.permission_read_write, Toast.LENGTH_LONG).show();
 				}
 			}
 		}
@@ -264,7 +281,8 @@ public class MainActivity extends AppCompatActivity
 
 
     private void loadDrawables() {
-        intDrawables = new int[]{R.drawable.d01,
+        intDrawables = new int[]{
+				R.drawable.d01,
                 R.drawable.d02,
                 R.drawable.d03,
                 R.drawable.d04,
@@ -273,6 +291,42 @@ public class MainActivity extends AppCompatActivity
                 R.drawable.d07,
                 R.drawable.d08,
                 R.drawable.d09,
+				R.drawable.d10,
+				R.drawable.d11,
+				R.drawable.d12,
+				R.drawable.d13,
+				R.drawable.d14,
+				R.drawable.d15,
+				R.drawable.d16,
+				R.drawable.d17,
+				R.drawable.d18,
+				R.drawable.d19,
+				R.drawable.d20,
+				R.drawable.d21,
         };
     }
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		// Resume the AdView.
+		mAdView.resume();
+	}
+
+	@Override
+	public void onPause() {
+		// Pause the AdView.
+		mAdView.pause();
+
+		super.onPause();
+	}
+
+	@Override
+	public void onDestroy() {
+		// Destroy the AdView.
+		mAdView.destroy();
+
+		super.onDestroy();
+	}
 }
