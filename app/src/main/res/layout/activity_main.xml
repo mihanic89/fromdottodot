@@ -8,15 +8,7 @@
     tools:context=".ui.activity.MainActivity"
     android:orientation="vertical">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+
 
     <xyz.yapapa.fromdottodot.ui.component.DrawingView
         android:id="@+id/main_drawing_view"
@@ -121,9 +113,15 @@
             android:padding="@dimen/button_padding"
             android:clickable="true"
             android:background="?attr/selectableItemBackgroundBorderless"/>
-
-
     </LinearLayout>
 
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>
