@@ -8,6 +8,35 @@
     <array name="palette">
         <item>#FFF</item>
         <item>#000</item>
+        <item>@color/azure</item>
+        <item>@color/banana</item>
+        <item>@color/basil</item>
+        <item>@color/blue</item>
+        <item>@color/blue_light</item>
+        <item>@color/blueberry</item>
+        <item>@color/bright_pink</item>
+        <item>@color/cyan</item>
+        <item>@color/flamingo</item>
+        <item>@color/grape</item>
+        <item>@color/graphite</item>
+        <item>@color/green</item>
+        <item>@color/lavender</item>
+        <item>@color/magenta</item>
+        <item>@color/orange</item>
+
+        <item>@color/peacock</item>
+        <item>@color/red</item>
+
+        <item>@color/sage</item>
+        <item>@color/tangerine</item>
+
+        <item>@color/violet</item>
+        <item>@color/yellow</item>
+
+    </array>
+    <array name="palette1">
+        <item>#FFF</item>
+        <item>#000</item>
         <item>@color/tomato</item>
         <item>@color/tangerine</item>
         <item>@color/banana</item>
