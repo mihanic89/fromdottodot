@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity
 	private void initDrawingView()
 	{
 		mCurrentBackgroundColor = ContextCompat.getColor(this, android.R.color.white);
-		mCurrentColor = ContextCompat.getColor(this, android.R.color.black);
-		mCurrentStroke = 10;
+		mCurrentColor = ContextCompat.getColor(this, R.color.basil);
+		mCurrentStroke = 20;
 		mDrawingView.setDrawingCacheEnabled(true);
 		mDrawingView.setBackgroundResource(R.drawable.d01);//set the back ground if you wish to
 		mDrawingView.setPaintColor(mCurrentColor);
