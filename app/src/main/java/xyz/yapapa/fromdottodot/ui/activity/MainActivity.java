@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mAdView = (AdView) findViewById(adView);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("09D7B5315C60A80D280B8CDF618FD3DE")
+
                 .build();
         mAdView.loadAd(adRequest);
         loadDrawables();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		mCurrentBackgroundColor = ContextCompat.getColor(this, android.R.color.white);
 		mCurrentColor = ContextCompat.getColor(this, R.color.basil);
-		mCurrentStroke = 20;
+		mCurrentStroke = 15;
 		mDrawingView.setDrawingCacheEnabled(true);
 		mDrawingView.setBackgroundResource(R.drawable.d01);//set the back ground if you wish to
 		mDrawingView.setPaintColor(mCurrentColor);
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		if (PermissionManager.checkWriteStoragePermissions(this))
 		{
-			Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap());
+			Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap(getResources().getDrawable(intDrawables[i])));
 			startShareDialog(uri);
 		}
 	}
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity
 			{
 				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
 				{
-					Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap());
+					Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap(getResources().getDrawable(intDrawables[i])));
 					startShareDialog(uri);
 				} else
 				{
