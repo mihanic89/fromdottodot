@@ -3,6 +3,7 @@ package xyz.yapapa.fromdottodot.ui.activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Bundle bundle = getIntent().getExtras();
+		i = bundle.getInt("position");
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mAdView = (AdView) findViewById(adView);
         AdRequest adRequest = new AdRequest.Builder()
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity
 		ButterKnife.bind(this);
 
 		initDrawingView();
+
+		mDrawingView.setCustomBitmap1(BitmapFactory.decodeResource(getResources(),intDrawables[i]));
 	}
 
 	@Override
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity
 				requestPermissionsAndSaveBitmap();
 				break;
 			case R.id.action_clear:
-				mDrawingView.clearCanvas();
+				mDrawingView.clearCanvaswithoutBackground();
 				break;
 		}
 
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity
 		mCurrentColor = ContextCompat.getColor(this, R.color.basil);
 		mCurrentStroke = 15;
 		mDrawingView.setDrawingCacheEnabled(true);
-		mDrawingView.setBackgroundResource(R.drawable.d01);//set the back ground if you wish to
+		//mDrawingView.setBackgroundResource(R.drawable.d01);//set the back ground if you wish to
 		mDrawingView.setPaintColor(mCurrentColor);
 		mDrawingView.setPaintStrokeWidth(mCurrentStroke);
 
@@ -206,7 +211,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		if (PermissionManager.checkWriteStoragePermissions(this))
 		{
-			Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap(getResources().getDrawable(intDrawables[i])));
+			Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap());
 			startShareDialog(uri);
 		}
 	}
@@ -221,7 +226,7 @@ public class MainActivity extends AppCompatActivity
 			{
 				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
 				{
-					Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap(getResources().getDrawable(intDrawables[i])));
+					Uri uri = FileManager.saveBitmap(mDrawingView.getBitmap());
 					startShareDialog(uri);
 				} else
 				{
@@ -266,7 +271,7 @@ public class MainActivity extends AppCompatActivity
     @OnClick(R.id.delete)
     public void onDeleteOptionClick()
     {
-        mDrawingView.clearCanvas();
+		mDrawingView.clearCanvaswithoutBackground();
     }
 
     @OnClick(R.id.main_redo_iv)
@@ -282,8 +287,8 @@ public class MainActivity extends AppCompatActivity
         i--;
         if (i<0 )
         {i=intDrawables.length-1;
-            mDrawingView.setBackgroundResource(intDrawables[i]);}
-        else {mDrawingView.setBackgroundResource(intDrawables[i]);}
+			mDrawingView.setCustomBitmap2(intDrawables[i]);}
+        else {mDrawingView.setCustomBitmap2(intDrawables[i]);}
     }
 
     @OnClick(R.id.next_pic)
@@ -291,9 +296,9 @@ public class MainActivity extends AppCompatActivity
         mDrawingView.clearCanvas();
         i++;
         if (i<intDrawables.length )
-        {mDrawingView.setBackgroundResource(intDrawables[i]);}
+        {mDrawingView.setCustomBitmap2(intDrawables[i]);}
         else {i=0;
-            mDrawingView.setBackgroundResource(intDrawables[i]);}
+			mDrawingView.setCustomBitmap2(intDrawables[i]);}
     }
 
 
@@ -331,6 +336,8 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.p11,
 					R.drawable.p11_1,
 					R.drawable.p12,
+					R.drawable.p12_1,
+					R.drawable.p13,
 					R.drawable.p13_1,
 					R.drawable.p14,
 					R.drawable.p14_1,
@@ -384,7 +391,6 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.d19,
 					R.drawable.d19_1,
 
-
 					R.drawable.p31,
 					R.drawable.p31_1,
 					R.drawable.p32,
@@ -427,6 +433,8 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.p11,
 					R.drawable.p11_1,
 					R.drawable.p12,
+					R.drawable.p12_1,
+					R.drawable.p13,
 					R.drawable.p13_1,
 					R.drawable.p14,
 					R.drawable.p14_1,
@@ -481,6 +489,7 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.d19_1,
 					R.drawable.d20,
 					R.drawable.d20_1,
+
 					R.drawable.p31,
 					R.drawable.p31_1,
 					R.drawable.p32,
