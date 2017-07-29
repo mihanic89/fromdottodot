@@ -17,7 +17,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/rebus_image"
+            android:id="@+id/menu_item_image"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:gravity="center_horizontal"

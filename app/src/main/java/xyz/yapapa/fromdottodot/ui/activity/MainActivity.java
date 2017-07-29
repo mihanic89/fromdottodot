@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity
 
 		initDrawingView();
 
+		if (i>(intDrawables.length-1)) i= intDrawables.length-1;
+
 		mDrawingView.setCustomBitmap1(BitmapFactory.decodeResource(getResources(),intDrawables[i]));
 	}
 
@@ -390,6 +392,8 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.d18_1,
 					R.drawable.d19,
 					R.drawable.d19_1,
+					R.drawable.d20,
+					R.drawable.d20_1,
 
 					R.drawable.p31,
 					R.drawable.p31_1,
