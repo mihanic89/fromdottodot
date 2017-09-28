@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -66,8 +67,13 @@ public class MainActivity extends AppCompatActivity
 		i = bundle.getInt("position");
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         mAdView = (AdView) findViewById(adView);
-        AdRequest adRequest = new AdRequest.Builder()
 
+		Bundle extras = new Bundle();
+		extras.putBoolean("is_designed_for_families", true);
+
+        AdRequest adRequest = new AdRequest.Builder()
+				.tagForChildDirectedTreatment(true)
+				.addNetworkExtrasBundle(AdMobAdapter.class, extras)
                 .build();
         mAdView.loadAd(adRequest);
         loadDrawables();
