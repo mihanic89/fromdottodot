@@ -38,6 +38,7 @@ import static xyz.yapapa.fromdottodot.R.id.adViewRecycle;
 public class MainActivityRecycleView extends AppCompatActivity {
 
     private AdView mAdView;
+    private int recycleGrids=2;
 
     // The RecyclerView that holds and displays Native Express ads and menu items.
     private RecyclerView mRecyclerView;
@@ -58,7 +59,11 @@ public class MainActivityRecycleView extends AppCompatActivity {
 
         // Specify a linear layout manager.
 
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        int screenSize = getResources().getConfiguration().screenLayout &
+        		Configuration.SCREENLAYOUT_SIZE_MASK;
+        if (screenSize==Configuration.SCREENLAYOUT_SIZE_XLARGE) recycleGrids=4;
+
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, recycleGrids);
         final  RecyclerView.Adapter adapter = new RecyclerViewAdapter(this, mRecyclerViewItems);
 
 
@@ -76,8 +81,8 @@ public class MainActivityRecycleView extends AppCompatActivity {
         extras.putBoolean("is_designed_for_families", true);
         mAdView = (AdView) findViewById(adViewRecycle);
         AdRequest adRequest = new AdRequest.Builder()
-                .tagForChildDirectedTreatment(true)
-                .addNetworkExtrasBundle(AdMobAdapter.class, extras)
+               // .tagForChildDirectedTreatment(true)
+                //.addNetworkExtrasBundle(AdMobAdapter.class, extras)
                 //.addTestDevice("09D7B5315C60A80D280B8CDF618FD3DE")
                 .build();
         mAdView.loadAd(adRequest);
@@ -103,6 +108,15 @@ public class MainActivityRecycleView extends AppCompatActivity {
         mRecyclerViewItems.add(new MenuItem(R.mipmap.d01_1));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.d02));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.d02_1));
+
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b01));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b01_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b02));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b02_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b03));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b03_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b04));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b04_1));
 
         mRecyclerViewItems.add(new MenuItem(R.mipmap.p01));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.p01_1));
@@ -146,6 +160,49 @@ public class MainActivityRecycleView extends AppCompatActivity {
         mRecyclerViewItems.add(new MenuItem(R.mipmap.p20_1));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.p21));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.p21_1));
+
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b05));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b05_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b06));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b06_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b07));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b07_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b08));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b08_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b09));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b09_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b10));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b10_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b11));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b11_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b12));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b12_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b13));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b13_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b14));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b14_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b15));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b15_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b16));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b16_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b17));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b17_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b18));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b18_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b19));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b19_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b20));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b20_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b21));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b21_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b22));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b22_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b23));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b23_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b24));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b24_1));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b25));
+        mRecyclerViewItems.add(new MenuItem(R.mipmap.b25_1));
 
         mRecyclerViewItems.add(new MenuItem(R.mipmap.d03));
         mRecyclerViewItems.add(new MenuItem(R.mipmap.d03_1));

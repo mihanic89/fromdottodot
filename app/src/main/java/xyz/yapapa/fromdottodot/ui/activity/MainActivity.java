@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity
 		extras.putBoolean("is_designed_for_families", true);
 
         AdRequest adRequest = new AdRequest.Builder()
-				.tagForChildDirectedTreatment(true)
-				.addNetworkExtrasBundle(AdMobAdapter.class, extras)
+				//.tagForChildDirectedTreatment(true)
+				//.addNetworkExtrasBundle(AdMobAdapter.class, extras)
                 .build();
         mAdView.loadAd(adRequest);
         loadDrawables();
@@ -312,14 +312,23 @@ public class MainActivity extends AppCompatActivity
 
     private void loadDrawables() {
 
-		int screenSize = getResources().getConfiguration().screenLayout &
-				Configuration.SCREENLAYOUT_SIZE_MASK;
-		if (screenSize==Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+		//int screenSize = getResources().getConfiguration().screenLayout &
+		//		Configuration.SCREENLAYOUT_SIZE_MASK;
+		//if (screenSize==Configuration.SCREENLAYOUT_SIZE_XLARGE) {
 			intDrawables = new int[]{
 					R.drawable.d01,
 					R.drawable.d01_1,
 					R.drawable.d02,
 					R.drawable.d02_1,
+
+					R.drawable.b01,
+					R.drawable.b01_1,
+					R.drawable.b02,
+					R.drawable.b02_1,
+					R.drawable.b03,
+					R.drawable.b03_1,
+					R.drawable.b04,
+					R.drawable.b04_1,
 
 					R.drawable.p01,
 					R.drawable.p01_1,
@@ -363,6 +372,51 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.p20_1,
 					R.drawable.p21,
 					R.drawable.p21_1,
+
+
+					R.drawable.b05,
+					R.drawable.b05_1,
+					R.drawable.b06,
+					R.drawable.b06_1,
+					R.drawable.b07,
+					R.drawable.b07_1,
+					R.drawable.b08,
+					R.drawable.b08_1,
+					R.drawable.b09,
+					R.drawable.b09_1,
+					R.drawable.b10,
+					R.drawable.b10_1,
+					R.drawable.b11,
+					R.drawable.b11_1,
+					R.drawable.b12,
+					R.drawable.b12_1,
+					R.drawable.b13,
+					R.drawable.b13_1,
+					R.drawable.b14,
+					R.drawable.b14_1,
+					R.drawable.b15,
+					R.drawable.b15_1,
+					R.drawable.b16,
+					R.drawable.b16_1,
+					R.drawable.b17,
+					R.drawable.b17_1,
+					R.drawable.b18,
+					R.drawable.b18_1,
+					R.drawable.b19,
+					R.drawable.b19_1,
+					R.drawable.b20,
+					R.drawable.b20_1,
+					R.drawable.b21,
+					R.drawable.b21_1,
+					R.drawable.b22,
+					R.drawable.b22_1,
+					R.drawable.b23,
+					R.drawable.b23_1,
+					R.drawable.b24,
+					R.drawable.b24_1,
+					R.drawable.b25,
+					R.drawable.b25_1,
+
 
 					R.drawable.d03,
 					R.drawable.d03_1,
@@ -411,8 +465,8 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.p34_1,
 					R.drawable.p35,
 					R.drawable.p35_1,
-			};
-		}
+			//};
+		/*}
 		else{
 			intDrawables = new int[]{
 					R.drawable.d01,
@@ -510,6 +564,7 @@ public class MainActivity extends AppCompatActivity
 					R.drawable.p34_1,
 					R.drawable.p35,
 					R.drawable.p35_1,};
+					*/
 
 
         };
