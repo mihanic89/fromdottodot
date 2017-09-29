@@ -103,7 +103,12 @@ import java.util.ArrayList;
 
 			//mCanvasBitmapBackground= Bitmap.createBitmap(b1, x0, y0,
 			//		mDrawCanvas.getWidth(), mDrawCanvas.getHeight());
-			canvas.drawBitmap(mCanvasBitmapBackground,x0, y0, null);
+			try {
+				canvas.drawBitmap(mCanvasBitmapBackground, x0, y0, null);
+			}
+			catch (Exception e){
+
+			}
 		}
 
 
