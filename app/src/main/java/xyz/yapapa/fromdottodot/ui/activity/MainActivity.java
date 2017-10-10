@@ -36,18 +36,16 @@ import static xyz.yapapa.fromdottodot.R.id.adView;
 
 public class MainActivity extends AppCompatActivity
 {
-	@Bind(R.id.main_drawing_view)
-	DrawingView mDrawingView;
+	@Bind(R.id.main_drawing_view) DrawingView mDrawingView;
 	//@Bind(R.id.main_fill_iv)    ImageView mFillBackgroundImageView;
-	@Bind(R.id.main_color_iv)
-	ImageView mColorImageView;
+	@Bind(R.id.main_color_iv)    ImageView mColorImageView;
 	@Bind(R.id.main_stroke_iv) 	SquareImageView mStrokeImageView;
 	@Bind(R.id.main_undo_iv)    SquareImageView mUndoImageView;
 	@Bind(R.id.main_redo_iv)    SquareImageView mRedoImageView;
-    @Bind(R.id.prev_pic)        SquareImageView mPrevImageView;
-    @Bind(R.id.next_pic)        SquareImageView mNextImageView;
-    @Bind(R.id.share)           SquareImageView mShareImageView;
-    @Bind(R.id.delete)          SquareImageView mDeleteImageView;
+	@Bind(R.id.prev_pic)        SquareImageView mPrevImageView;
+	@Bind(R.id.next_pic)        SquareImageView mNextImageView;
+	@Bind(R.id.share)           SquareImageView mShareImageView;
+	@Bind(R.id.delete)          SquareImageView mDeleteImageView;
 
 	private int mCurrentBackgroundColor;
 	private int mCurrentColor;
@@ -63,6 +61,7 @@ public class MainActivity extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		ButterKnife.bind(this);
 		Bundle bundle = getIntent().getExtras();
 		i = bundle.getInt("position");
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity
                 .build();
         mAdView.loadAd(adRequest);
         loadDrawables();
-		ButterKnife.bind(this);
+
 
 		initDrawingView();
 
